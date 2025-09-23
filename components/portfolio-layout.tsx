@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { GetInTouchModal } from "./get-in-touch-modal"
 import { ThemeToggle } from "./theme-toggle"
+import { useTheme } from "@/contexts/theme-context"
 
 interface PortfolioLayoutProps {
   children: React.ReactNode
@@ -28,6 +29,7 @@ export function PortfolioLayout({ children, currentPage }: PortfolioLayoutProps)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const { theme } = useTheme()
   const router = useRouter()
 
   const currentIndex = navigation.findIndex((item) => item.key === currentPage)
@@ -157,7 +159,7 @@ export function PortfolioLayout({ children, currentPage }: PortfolioLayoutProps)
             </div>
           </nav>
 
-          <div className="flex-1 p-8 pt-4 pb-4 overflow-y-auto max-h-[calc(100vh-160px)] scrollbar-hide">
+          <div className="flex-1 p-8 pt-4 pb-4 overflow-y-auto max-h-[calc(100vh-120px)] scrollbar-hide">
             {children}
           </div>
 
@@ -193,14 +195,17 @@ export function PortfolioLayout({ children, currentPage }: PortfolioLayoutProps)
         <header className="bg-gradient-to-r from-red-400 to-red-500 text-white p-4">
           <div className="flex items-center justify-between">
             <h1 className="text-xl font-bold tracking-wider">DEV.PORTFOLIO</h1>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white hover:bg-white/20"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </Button>
+            <div className="flex items-center space-x-3">
+              <ThemeToggle />
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-white hover:bg-white/20"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Navigation */}
@@ -226,15 +231,20 @@ export function PortfolioLayout({ children, currentPage }: PortfolioLayoutProps)
         </header>
 
         {/* Mobile Content */}
-        <main className="p-4">{children}</main>
+        <main className="p-4 pb-20">{children}</main>
 
         {/* Mobile Navigation Arrows */}
-        <div className="fixed bottom-4 left-4 right-4">
+        <div className="fixed bottom-6 left-4 right-4 z-50">
           <div className="flex items-center justify-between">
             <Button
               onClick={() => handleNavigation("prev")}
               size="lg"
-              className="bg-red-500 hover:bg-red-600 text-white shadow-lg"
+              className={cn(
+                "shadow-lg transition-colors",
+                theme === "dark" 
+                  ? "bg-gray-800 hover:bg-gray-700 text-white border-gray-600" 
+                  : "bg-red-500 hover:bg-red-600 text-white"
+              )}
             >
               <ChevronLeft className="w-5 h-5 mr-2" />
               PREV
@@ -243,7 +253,12 @@ export function PortfolioLayout({ children, currentPage }: PortfolioLayoutProps)
             <Button
               onClick={() => handleNavigation("next")}
               size="lg"
-              className="bg-red-500 hover:bg-red-600 text-white shadow-lg"
+              className={cn(
+                "shadow-lg transition-colors",
+                theme === "dark" 
+                  ? "bg-gray-800 hover:bg-gray-700 text-white border-gray-600" 
+                  : "bg-red-500 hover:bg-red-600 text-white"
+              )}
             >
               NEXT
               <ChevronRight className="w-5 h-5 ml-2" />
