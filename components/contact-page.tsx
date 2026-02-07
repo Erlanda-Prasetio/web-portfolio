@@ -8,28 +8,28 @@ export function ContactPage() {
     {
       name: "WhatsApp",
       icon: faWhatsapp,
-      href: "#",
+      href: "https://wa.me/6285156022561",
       color: "bg-green-500 hover:bg-green-600",
       description: "Message me directly",
     },
     {
       name: "Instagram",
       icon: faInstagram,
-      href: "#",
+      href: "https://www.instagram.com/erlandaemv?igsh=MW44ZDRvN3Q1cXNybA%3D%3D&utm_source=qr",
       color: "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600",
       description: "Follow my journey",
     },
     {
       name: "LinkedIn",
       icon: faLinkedinIn,
-      href: "#",
+      href: "https://www.linkedin.com/in/erlanda-galant-prasetio-13428620b",
       color: "bg-blue-600 hover:bg-blue-700",
       description: "Professional network",
     },
     {
       name: "TikTok",
       icon: faTiktok,
-      href: "#",
+      href: "https://www.tiktok.com/@erlandaprasetio?_r=1&_t=ZS-93iGk5tPGc5",
       color: "bg-black hover:bg-gray-800",
       description: "Creative content",
     },
@@ -63,9 +63,12 @@ export function ContactPage() {
                   <Button
                     variant="ghost"
                     size="sm"
+                    asChild
                     className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   >
-                    Connect
+                    <a href={social.href} target="_blank" rel="noopener noreferrer">
+                      Connect
+                    </a>
                   </Button>
                 </div>
               </CardContent>

@@ -23,7 +23,7 @@ const navigation = [
   { name: "Contact", href: "/contact", key: "contact" },
 ]
 
-const profileImages = ["/new-profile.png", "/professional-developer-portrait.png"]
+const profileImages = ["/new-profile.png"]
 
 export function PortfolioLayout({ children, currentPage }: PortfolioLayoutProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -85,46 +85,11 @@ export function PortfolioLayout({ children, currentPage }: PortfolioLayoutProps)
                   }`}
                 />
               </div>
-
-              <button
-                onClick={() => handleImageNavigation("prev")}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-all"
-              >
-                <ChevronLeft className="w-4 h-4 text-gray-700" />
-              </button>
-
-              <button
-                onClick={() => handleImageNavigation("next")}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-all"
-              >
-                <ChevronRight className="w-4 h-4 text-gray-700" />
-              </button>
-
-              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
-                {profileImages.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToImage(index)}
-                    className={cn(
-                      "rounded-full transition-all duration-300 hover:scale-110",
-                      currentImageIndex === index
-                        ? "w-4 h-4 bg-white shadow-lg ring-2 ring-white/50"
-                        : "w-2 h-2 bg-white/60 hover:bg-white/80",
-                    )}
-                  />
-                ))}
-              </div>
             </div>
           </div>
 
           {/* View All Button */}
           <div className="p-8">
-            <Button
-              variant="outline"
-              className="bg-transparent border-white text-white hover:bg-white hover:text-red-500 transition-colors"
-            >
-              VIEW ALL
-            </Button>
           </div>
         </div>
 
@@ -150,10 +115,10 @@ export function PortfolioLayout({ children, currentPage }: PortfolioLayoutProps)
               <div className="flex items-center space-x-4">
                 <ThemeToggle />
                 <Button
-                  onClick={() => setIsModalOpen(true)}
+                  asChild
                   className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full shadow-[0_4px_14px_0_rgb(59,130,246,0.39)] hover:shadow-[0_6px_20px_rgba(59,130,246,0.6)] border-0 outline-none relative overflow-hidden transition-all duration-300 before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/20 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity"
                 >
-                  Get In Touch
+                  <Link href="/contact">Get In Touch</Link>
                 </Button>
               </div>
             </div>

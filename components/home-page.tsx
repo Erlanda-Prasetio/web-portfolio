@@ -28,7 +28,7 @@ export function HomePage() {
 
         <h3 className="text-xl font-semibold text-gray-900 mb-4">Setup Kerja</h3>
         <p className="mb-8">
-          Berdomisili di Semarang, Jawa Tengah, saya bekerja dari home office yang sudah disesuaikan untuk kebutuhan development. Environment ini memungkinkan saya untuk focus pada detail teknis yang kompleks. Untuk project collaboration, saya dapat bekerja secara remote atau on-site sesuai kebutuhan client. Ketika menghadapi problem yang challenging, saya biasanya meluangkan waktu untuk research dan eksplorasi berbagai approach sebelum menentukan solusi terbaik.
+          Berdomisili di Tegal, Jawa Tengah, saya bekerja dari home office yang sudah disesuaikan untuk kebutuhan development. Environment ini memungkinkan saya untuk focus pada detail teknis yang kompleks. Untuk project collaboration, saya dapat bekerja secara remote atau on-site sesuai kebutuhan client. Ketika menghadapi problem yang challenging, saya biasanya meluangkan waktu untuk research dan eksplorasi berbagai approach sebelum menentukan solusi terbaik.
         </p>
 
         <div className="flex space-x-6 text-gray-600">
