@@ -6,9 +6,9 @@ import { ThemeProvider } from '@/contexts/theme-context'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'Web Portfolio',
+  description: 'Erlanda Web Portfolio',
+  generator: 'Web-Portfolio',
 }
 
 export default function RootLayout({

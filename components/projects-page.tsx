@@ -49,6 +49,34 @@ const projects: Project[] = [
     bgColor: "bg-white dark:bg-gray-100",
     textColor: "text-black",
     accentColor: "text-gray-700"
+  },
+  {
+    id: "3",
+    title: "Sistem Absensi Magang Digital",
+    subtitle: "DPMPTSP Provinsi Jawa Tengah",
+    description: "Sistem manajemen presensi dan monitoring aktivitas peserta magang berbasis geolokasi dan real-time reporting",
+    technologies: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "Radix UI"],
+    status: "completed",
+    liveUrl: "https://absensi-magang-dpmptsp.vercel.app/login",
+    githubUrl: "https://github.com/Erlanda-Prasetio/Absensi-Syafa",
+    details: "Platform manajemen presensi digital yang dirancang untuk memodernisasi proses administrasi magang di DPMPTSP. Sistem ini menggantikan pencatatan manual dengan solusi otomatis berbasis lokasi dan cloud database.\\n\\nKey Features:\\n• Geolocation Verification: Validasi lokasi check-in/out menggunakan GPS untuk memastikan kehadiran di kantor\\n• Real-time Activity Logs: Pemantauan aktivitas user dan log sistem secara langsung (live updates)\\n• Data Export Center: Kemampuan eksport data absensi dan profil pengguna ke format CSV/Excel untuk pelaporan\\n• Comprehensive Admin Dashboard: Analitik kehadiran dan manajemen user terpusat dengan role-based security",
+    bgColor: "bg-white dark:bg-gray-100",
+    textColor: "text-[#00786F]",
+    accentColor: "text-[#00786F]"
+  },
+  {
+    id: "4",
+    title: "Kaarten",
+    subtitle: "Web-Based Gacha & Trading Card Game",
+    description: "Simulasi Trading Card Game (TCG) interaktif dengan sistem gacha, manajemen koleksi kartu, dan misi harian",
+    technologies: ["JavaScript", "Phaser 3", "Vite", "CSS"],
+    status: "completed",
+    liveUrl: "https://kaarten.vercel.app/",
+    githubUrl: "https://github.com/Erlanda-Prasetio/kaarten",
+    details: "Kaarten, game simulasi TCG berbasis web yang dibangun menggunakan engine Phaser 3 untuk pengalaman visual yang interaktif. Pemain dapat mengumpulkan berbagai jenis kartu melalui sistem gacha, menyelesaikan misi harian, dan melengkapi koleksi album mereka.\\n\\nKey Features:\\n• Interactive Gacha System: Mekanisme summoning kartu animasi dengan tingkat kelangkaan (rarity) yang berbeda\\n• Dynamic Collection Management: Sistem inventori visual untuk mengatur dan melihat detail koleksi kartu\\n• Player Progression: Sistem level, achievement, dan daily missions untuk retensi pemain\\n• In-Game Economy: Shop system untuk pembelian card pack dan resource management",
+    bgColor: "bg-white dark:bg-gray-100",
+    textColor: "text-[#44008b]",
+    accentColor: "text-[#44008b]"
   }
 ]
 
@@ -201,7 +229,7 @@ export function ProjectsPage() {
                             <Button 
                               asChild 
                               size="sm"
-                              className={`${project.textColor.replace('text-', 'bg-')} hover:opacity-90 text-white`}
+                              className={`${project.id === "1" ? "bg-black dark:bg-black" : project.textColor.replace('text-', 'bg-')} hover:opacity-90 text-white`}
                               onClick={(e) => e.stopPropagation()}
                             >
                               <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -233,35 +261,60 @@ export function ProjectsPage() {
                             {/* <h3 className={`text-lg md:text-xl font-bold ${project.textColor} mb-4`}>
                               Live Preview
                             </h3> */}
-                            <div className="flex justify-center">
-                              <div className="device device-iphone-14 device-starlight" style={{ transform: 'scale(0.935)', transformOrigin: 'center' }}>
-                                <div className="device-frame">
-                                  <iframe
-                                    src={project.liveUrl}
-                                    className="device-screen"
-                                    title={`${project.title} Live Preview`}
-                                    loading="lazy"
-                                    scrolling="no"
-                                    style={{ 
-                                      width: '100%',
-                                      height: '100%',
-                                      border: 'none',
-                                      //overflow: 'hidden',
-                                      paddingTop: '20px', // Account for notch/Dynamic Island
-                                      backgroundColor: 'white', // White padding area
-                                      boxSizing: 'border-box',
-                                      imageRendering: 'crisp-edges',
-                                      transform: 'translateZ(0)', // Force hardware acceleration
-                                      backfaceVisibility: 'hidden'
-                                    }}
-                                  />
+                            <div className="flex justify-center items-center h-full">
+                              {project.id === "4" || project.id === "1" ? (
+                                <div className={`device device-imac ${project.id === "4" ? "device-blue" : ""}`} style={{ transform: 'scale(0.85)', transformOrigin: 'center' }}>
+                                  <div className="device-frame">
+                                    <iframe
+                                      src={project.liveUrl}
+                                      className="device-screen"
+                                      title={`${project.title} Live Preview`}
+                                      loading="lazy"
+                                      scrolling="no"
+                                      style={{ 
+                                        width: '200%',
+                                        height: '200%',
+                                        border: 'none',
+                                        backgroundColor: 'white',
+                                        boxSizing: 'border-box',
+                                        transform: 'scale(0.5)',
+                                        transformOrigin: 'top left'
+                                      }}
+                                    />
+                                  </div>
+                                  <div className="device-power"></div>
+                                  <div className="device-home"></div>
                                 </div>
+                              ) : (
+                                <div className="device device-iphone-14 device-starlight" style={{ transform: 'scale(0.935)', transformOrigin: 'center' }}>
+                                  <div className="device-frame">
+                                    <iframe
+                                      src={project.liveUrl}
+                                      className="device-screen"
+                                      title={`${project.title} Live Preview`}
+                                      loading="lazy"
+                                      scrolling="no"
+                                      style={{ 
+                                        width: '100%',
+                                        height: '100%',
+                                        border: 'none',
+                                        //overflow: 'hidden',
+                                        paddingTop: '20px', // Account for notch/Dynamic Island
+                                        backgroundColor: 'white', // White padding area
+                                        boxSizing: 'border-box',
+                                        imageRendering: 'crisp-edges',
+                                        transform: 'translateZ(0)', // Force hardware acceleration
+                                        backfaceVisibility: 'hidden'
+                                      }}
+                                    />
+                                  </div>
                                
-                                    <div className="device-header"></div>
-                                    <div className="device-sensors"></div>
-                                    <div className="device-btns"></div>
-                                    <div className="device-power"></div>
-                              </div>
+                                      <div className="device-header"></div>
+                                      <div className="device-sensors"></div>
+                                      <div className="device-btns"></div>
+                                      <div className="device-power"></div>
+                                </div>
+                              )}
                             </div>
                             <p className="text-xs text-gray-500 mt-4 text-center">
                               Preview only - Click "Live Demo" to interact
